@@ -14,7 +14,7 @@ To build run:
 docker build -t myapp .
 ```
 
-This will build and install composer packages. composer will only run install if there is no `vendor` folder present, and will only re-run if the `composer.lock` has changed.
+This will build and install composer packages. composer will only run install if there is no `vendor` folder present.
 
 
 Run:
