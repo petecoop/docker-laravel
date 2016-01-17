@@ -24,7 +24,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN a2enmod rewrite
 
-COPY virtualhost.conf /etc/apache2/sites-enabled
+COPY virtualhost.conf /etc/apache2/sites-enabled/
 
 ONBUILD COPY . /var/www/html
 
