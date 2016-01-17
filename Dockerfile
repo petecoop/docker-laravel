@@ -26,7 +26,10 @@ RUN a2enmod rewrite
 
 COPY virtualhost.conf /etc/apache2/sites-enabled/
 
-ONBUILD COPY . /var/www/html
+# only re run composer if composer.lock has changed.
+ONBUILD COPY ./composer.lock /var/www/html/
 
 # install composer deps if they don't exist
 ONBUILD RUN if [ ! -d "vendor" ];then composer install --no-dev --prefer-dist -o; fi
+
+ONBUILD COPY . /var/www/html
