@@ -1,6 +1,6 @@
 FROM php:7-apache
 
-#install php modules
+# install php modules
 RUN apt-get update && apt-get install -y \
     freetds-dev \
     libicu-dev \
@@ -19,14 +19,18 @@ RUN apt-get update && apt-get install -y \
  && cd /usr/src/php \
  && make clean
 
-#composer
+# composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN a2enmod rewrite
 
 COPY virtualhost.conf /etc/apache2/sites-enabled/
 
+# install composer deps
+ONBUILD COPY composer.json composer.json
+ONBUILD COPY composer.lock composer.lock
+ONBUILD RUN composer install --no-dev --prefer-dist --no-autoloader
+
 ONBUILD COPY . /var/www/html
 
-# install composer deps if they don't exist
-ONBUILD RUN if [ ! -d "vendor" ];then composer install --no-dev --prefer-dist -o; fi
+ONBUILD RUN php artisan optimize
