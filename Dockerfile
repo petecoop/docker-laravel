@@ -1,7 +1,7 @@
 FROM php:7-apache
 
 # install php modules
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --force-yes \
     freetds-dev \
     libicu-dev \
     libpq-dev \
