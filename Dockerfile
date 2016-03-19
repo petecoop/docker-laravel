@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y --force-yes \
     mcrypt \
     pdo_dblib \
     pdo_mysql \
+    pdo_pgsql \
     zip \
  && cd /usr/src/php \
  && make clean
