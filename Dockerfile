@@ -30,7 +30,7 @@ COPY virtualhost.conf /etc/apache2/sites-enabled/
 # install composer deps
 ONBUILD COPY composer.json composer.json
 ONBUILD COPY composer.lock composer.lock
-ONBUILD RUN composer install --no-dev --prefer-dist --no-autoloader
+ONBUILD RUN composer install --no-dev --prefer-dist --no-autoloader --no-scripts
 
 ONBUILD COPY . /var/www/html
 
