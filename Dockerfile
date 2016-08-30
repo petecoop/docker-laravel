@@ -16,9 +16,7 @@ RUN apt-get update && apt-get install -y --force-yes \
     pdo_dblib \
     pdo_mysql \
     pdo_pgsql \
-    zip \
- && cd /usr/src/php \
- && make clean
+    zip
 
 # composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
