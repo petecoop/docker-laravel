@@ -23,7 +23,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN a2enmod rewrite
 
-COPY virtualhost.conf /etc/apache2/sites-enabled/
+COPY virtualhost.conf /etc/apache2/sites-enabled/000-default.conf
 
 # install composer deps
 ONBUILD COPY composer.json composer.json
