@@ -6,7 +6,7 @@ This image is based on the official PHP docker image, and uses PHP 7.
 
 Create a `Dockerfile` at the root of your project:
 ```
-FROM petecoop/laravel
+FROM petecoop/laravel:onbuild
 ```
 
 To build run:
